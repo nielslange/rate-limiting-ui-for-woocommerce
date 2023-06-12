@@ -1,6 +1,6 @@
 name: Run PHPCS, PHPLint, and Psalm
 
-on: [push, pull_request]
+on: push
 
 jobs:
   PHPCS:
