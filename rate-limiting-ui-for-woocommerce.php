@@ -69,7 +69,7 @@ add_filter( 'woocommerce_get_sections_advanced', 'add_wc_advanced_settings_tab',
  */
 function add_wc_advanced_settings( $settings ) {
 	global $current_section;
-	if ( 'rate_limiting' == $current_section ) {
+	if ( 'rate_limiting' === $current_section ) {
 		$rate_limiting_settings = array(
 			array(
 				'name' => __( 'Rate Limiting', 'rate-limiting-ui-for-woocommerce' ),
