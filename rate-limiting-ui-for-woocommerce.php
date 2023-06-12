@@ -150,6 +150,11 @@ function save_wc_rate_limiting_settings() {
 }
 add_action( 'woocommerce_update_options_advanced', 'save_wc_rate_limiting_settings' );
 
+/**
+ * Add the rate limiting settings to the WooCommerce REST API settings.
+ *
+ * @return void
+ */
 add_filter(
 	'woocommerce_store_api_rate_limit_options',
 	function () {
