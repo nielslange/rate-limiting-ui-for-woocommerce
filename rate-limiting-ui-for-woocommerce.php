@@ -39,6 +39,7 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'smntcs_google
  * Add a new settings section tab to the WooCommerce advanced settings tabs array.
  *
  * @param array $sections The original array with the WooCommerce settings tabs.
+ *
  * @return array $sections The updated array with our settings tab added.
  */
 function add_wc_advanced_settings_tab( $sections ) {
@@ -48,20 +49,6 @@ function add_wc_advanced_settings_tab( $sections ) {
 }
 
 add_filter( 'woocommerce_get_sections_advanced', 'add_wc_advanced_settings_tab', 20 );
-
-// @phpcs:disable
-// add_filter(
-// 'woocommerce_store_api_rate_limit_options',
-// function() {
-// return array(
-// 'enabled'       => defined( 'STORE_API_RATE_LIMITING_ENABLED' ) ? STORE_API_RATE_LIMITING_ENABLED : true,
-// 'proxy_support' => defined( 'STORE_API_RATE_LIMITING_PROXY_SUPPORT' ) ? STORE_API_RATE_LIMITING_PROXY_SUPPORT : false,
-// 'limit'         => defined( 'STORE_API_RATE_LIMITING_LIMIT' ) ? STORE_API_RATE_LIMITING_LIMIT : 25,
-// 'seconds'       => defined( 'STORE_API_RATE_LIMITING_SECONDS' ) ? STORE_API_RATE_LIMITING_SECONDS : 10,
-// );
-// }
-// );
-// @phpcs:enable
 
 /**
  * Add the settings section to the WooCommerce settings tab array on the advanced tab.
@@ -131,26 +118,33 @@ function save_wc_rate_limiting_settings() {
 		return;
 	}
 
-
-	// Save the enable option
 	$enabled = isset( $_POST['enabled'] ) ? 'yes' : 'no';
 	update_option( 'rate_limiting_enabled', $enabled );
 
-	// Save the seconds option
 	if ( isset( $_POST['seconds'] ) ) {
 		$seconds = intval( $_POST['seconds'] );
 		update_option( 'rate_limiting_seconds', $seconds );
 	}
 
-	// Save the limit option
 	if ( isset( $_POST['limit'] ) ) {
 		$limit = intval( $_POST['limit'] );
 		update_option( 'rate_limiting_limit', $limit );
 	}
 
-	// Save the proxy support option
 	$proxy_support = isset( $_POST['proxy_support'] ) ? 'yes' : 'no';
 	update_option( 'rate_limiting_proxy_support', $proxy_support );
 }
 
 add_action( 'woocommerce_update_options_advanced', 'save_wc_rate_limiting_settings' );
+
+add_filter(
+	'woocommerce_store_api_rate_limit_options',
+	function () {
+		return array(
+			'enabled'       => get_option('rate_limiting_enabled', true),
+			'proxy_support' => get_option('rate_limiting_proxy_support', false),
+			'limit'         => get_option('rate_limiting_limit', 25),
+			'seconds'       => get_option('rate_limiting_seconds', 10),
+		);
+	}
+);
