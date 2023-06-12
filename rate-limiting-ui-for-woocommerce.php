@@ -14,9 +14,11 @@
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: rate-limiting-ui-for-woocommerce
+ *
+ * @package Rate_Limiting_UI_for_WooCommerce
  */
 
- /**
+/**
  * Add settings link on plugin page
  *
  * @param array $links The original array with customizer links.
@@ -34,75 +36,83 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'smntcs_google
 
 /**
  * Add a new settings section tab to the WooCommerce advanced settings tabs array.
+ *
+ * @param array $sections The original array with the WooCommerce settings tabs.
+ * @return array $sections The updated array with our settings tab added.
  */
-function add_wc_advanced_settings_tab($sections){
-    $sections['rate_limiting'] = __('Rate Limiting', 'rate-limiting-ui-for-woocommerce');
-    
-    return $sections;
-}
-add_filter('woocommerce_get_sections_advanced', 'add_wc_advanced_settings_tab', 20);
+function add_wc_advanced_settings_tab( $sections ) {
+	$sections['rate_limiting'] = __( 'Rate Limiting', 'rate-limiting-ui-for-woocommerce' );
 
-// add_filter( 'woocommerce_store_api_rate_limit_options', function() {
-// 	return [
-// 		'enabled' => defined('STORE_API_RATE_LIMITING_ENABLED') ? STORE_API_RATE_LIMITING_ENABLED : true, // enables/disables Rate Limiting
-// 		'proxy_support' => defined('STORE_API_RATE_LIMITING_PROXY_SUPPORT') ? STORE_API_RATE_LIMITING_PROXY_SUPPORT : false, //enables/disables Proxy support. Default:false
-// 		'limit' => defined('STORE_API_RATE_LIMITING_LIMIT') ? STORE_API_RATE_LIMITING_LIMIT : 25, // limit of request per timeframe. Default: 25
-// 		'seconds' => defined('STORE_API_RATE_LIMITING_SECONDS') ? STORE_API_RATE_LIMITING_SECONDS : 10, // timeframe in seconds. Default: 10
-// 	];
-// } );
+	return $sections;
+}
+add_filter( 'woocommerce_get_sections_advanced', 'add_wc_advanced_settings_tab', 20 );
+
+// @phpcs:disable
+// add_filter(
+// 'woocommerce_store_api_rate_limit_options',
+// function() {
+// return array(
+// 'enabled'       => defined( 'STORE_API_RATE_LIMITING_ENABLED' ) ? STORE_API_RATE_LIMITING_ENABLED : true,
+// 'proxy_support' => defined( 'STORE_API_RATE_LIMITING_PROXY_SUPPORT' ) ? STORE_API_RATE_LIMITING_PROXY_SUPPORT : false,
+// 'limit'         => defined( 'STORE_API_RATE_LIMITING_LIMIT' ) ? STORE_API_RATE_LIMITING_LIMIT : 25,
+// 'seconds'       => defined( 'STORE_API_RATE_LIMITING_SECONDS' ) ? STORE_API_RATE_LIMITING_SECONDS : 10,
+// );
+// }
+// );
+// @phpcs:enable
 
 /**
  * Add the settings section to the WooCommerce settings tab array on the advanced tab.
- * 
+ *
  * @param array $settings The settings array to add our section to.
  * @return array $settings The settings array with our section added.
  */
-function add_wc_advanced_settings($settings){
-    global $current_section;
-    if ('rate_limiting' == $current_section) {
-        $rate_limiting_settings = array(
-            array(
-                'name' => __('Rate Limiting', 'rate-limiting-ui-for-woocommerce'),
-                'type' => 'title',
-                'desc' => '',
-                'id'   => 'rate_limiting_settings'
-            ),
-            array(
-                'name'     => __('Enable', 'rate-limiting-ui-for-woocommerce'),
-                'id'       => 'enabled',
-                'type'     => 'checkbox',
-                'desc'     => __('Here is some help text', 'rate-limiting-ui-for-woocommerce'),
-            ),
-            array(
-                'name'     => __('Proxy support', 'rate-limiting-ui-for-woocommerce'),
-                'id'       => 'proxy_support',
-                'type'     => 'checkbox',
-                'desc'     => __('Here is some help text', 'rate-limiting-ui-for-woocommerce'),
-            ),
-            array(
-                'name'     => __('Limit', 'rate-limiting-ui-for-woocommerce'),
-                'id'       => 'limit',
-                'type'     => 'text',
-                'css'      => 'width:100px;',
-                'default'  => '25',
-                'desc'     => __('Here is some help text', 'rate-limiting-ui-for-woocommerce'),
-                
-            ),
-            array(
-                'name'     => __('Seconds', 'rate-limiting-ui-for-woocommerce'),
-                'id'       => 'seconds',
-                'type'     => 'text',
-                'css'      => 'width:100px;',
-                'default'  => '10',
-                'desc'     => __('Here is some help text', 'rate-limiting-ui-for-woocommerce'),
-            ),
-            array(
-                'type' => 'sectionend',
-                'id'   => 'rate_limiting_settings',
-            ),
-        );
-        return $rate_limiting_settings;
-    }
-    return $settings;
+function add_wc_advanced_settings( $settings ) {
+	global $current_section;
+	if ( 'rate_limiting' === $current_section ) {
+		$rate_limiting_settings = array(
+			array(
+				'name' => __( 'Rate Limiting', 'rate-limiting-ui-for-woocommerce' ),
+				'type' => 'title',
+				'desc' => '',
+				'id'   => 'rate_limiting_settings',
+			),
+			array(
+				'name' => __( 'Enable', 'rate-limiting-ui-for-woocommerce' ),
+				'id'   => 'enabled',
+				'type' => 'checkbox',
+				'desc' => __( 'Here is some help text', 'rate-limiting-ui-for-woocommerce' ),
+			),
+			array(
+				'name' => __( 'Proxy support', 'rate-limiting-ui-for-woocommerce' ),
+				'id'   => 'proxy_support',
+				'type' => 'checkbox',
+				'desc' => __( 'Here is some help text', 'rate-limiting-ui-for-woocommerce' ),
+			),
+			array(
+				'name'    => __( 'Limit', 'rate-limiting-ui-for-woocommerce' ),
+				'id'      => 'limit',
+				'type'    => 'text',
+				'css'     => 'width:100px;',
+				'default' => '25',
+				'desc'    => __( 'Here is some help text', 'rate-limiting-ui-for-woocommerce' ),
+
+			),
+			array(
+				'name'    => __( 'Seconds', 'rate-limiting-ui-for-woocommerce' ),
+				'id'      => 'seconds',
+				'type'    => 'text',
+				'css'     => 'width:100px;',
+				'default' => '10',
+				'desc'    => __( 'Here is some help text', 'rate-limiting-ui-for-woocommerce' ),
+			),
+			array(
+				'type' => 'sectionend',
+				'id'   => 'rate_limiting_settings',
+			),
+		);
+		return $rate_limiting_settings;
+	}
+	return $settings;
 }
-add_filter('woocommerce_get_settings_advanced', 'add_wc_advanced_settings');
+add_filter( 'woocommerce_get_settings_advanced', 'add_wc_advanced_settings' );

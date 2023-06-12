@@ -1,0 +1,47 @@
+{
+  "name": "mamos/rate-limiting-ui-for-woocommerce",
+  "description": "Allows merchants to configure the rate limiting settings for WooCommerce.",
+  "homepage": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce",
+  "support": {
+    "issues": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce/issues",
+    "source": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce"
+  },
+  "type": "wordpress-plugin",
+  "keywords": [
+    "WordPress",
+    "Plugin",
+    "Rate limiting UI for WooCommerce"
+  ],
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Paulo Aromba"
+    },
+    {
+      "name": "Niels Lange"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "require-dev": {
+    "humanmade/psalm-plugin-wordpress": "^2.0",
+    "overtrue/phplint": "2.3.5",
+    "phpcompatibility/phpcompatibility-wp": "^2.1",
+    "squizlabs/php_codesniffer": "^3.6",
+    "vimeo/psalm": "4.7",
+    "wp-coding-standards/wpcs": "^2.3",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1"
+  },
+  "scripts": {
+    "phpcbf": "phpcbf --standard=phpcs.xml .",
+    "phpcs": "phpcs --standard=phpcs.xml .",
+    "phplint": "phplint",
+    "psalm": "psalm --no-cache"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
+}
