@@ -4,3 +4,4 @@ phplint.cache
 .phplint.cache
 .phplint-cache
 .DS_Store
+.idea
