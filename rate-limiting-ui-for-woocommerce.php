@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Rate limiting UI for WooCommerce
- * Plugin URI: https://github.com/nielslange/rate-limiting-ui-for-woocommerce-blocks
+ * Plugin URI: https://github.com/nielslange/rate-limiting-ui-for-woocommerce
  * Description: Allows merchants to configure the rate limiting settings for WooCommerce.
  * Version: 1.0
  * Author: Paulo Arromba, Niels Lange
@@ -15,6 +15,22 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: rate-limiting-ui-for-woocommerce
  */
+
+ /**
+ * Add settings link on plugin page
+ *
+ * @param array $links The original array with customizer links.
+ *
+ * @return array The updated array with customizer links.
+ */
+function smntcs_google_webmasadd_plugin_action_links( array $links ) {
+	$admin_url     = admin_url( 'admin.php?page=wc-settings&tab=advanced&section=rate_limiting' );
+	$settings_link = sprintf( '<a href="%s">' . __( 'Settings', 'rate-limiting-ui-for-woocommerce' ) . '</a>', $admin_url );
+	array_unshift( $links, $settings_link );
+
+	return $links;
+}
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'smntcs_google_webmasadd_plugin_action_links' );
 
 /**
  * Add a new settings section tab to the WooCommerce advanced settings tabs array.
