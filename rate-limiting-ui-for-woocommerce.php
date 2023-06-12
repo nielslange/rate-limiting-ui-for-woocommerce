@@ -66,6 +66,12 @@ function add_wc_rate_limiting_settings( $settings ) {
 
 	$rate_limiting_settings = array(
 		array(
+			'name' => '',
+			'type' => 'title',
+			'desc' => wp_nonce_field( 'save_rate_limiting_settings', '_wpnonce', true, false ),
+			'id'   => 'nonce_field',
+		),
+		array(
 			'name' => __( 'Rate Limiting', 'rate-limiting-ui-for-woocommerce' ),
 			'type' => 'title',
 			'desc' => '',
@@ -108,14 +114,22 @@ function add_wc_rate_limiting_settings( $settings ) {
 
 	return $rate_limiting_settings;
 }
-
 add_filter( 'woocommerce_get_settings_advanced', 'add_wc_rate_limiting_settings' );
 
+/**
+ * Save the settings.
+ *
+ * @return void
+ */
 function save_wc_rate_limiting_settings() {
 	global $current_section;
 
 	if ( 'rate_limiting' !== $current_section ) {
 		return;
+	}
+
+	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'save_rate_limiting_settings' ) ) {
+		die( __( 'Could not verify request.', 'rate-limiting-ui-for-woocommerce' ) );
 	}
 
 	$enabled = isset( $_POST['enabled'] ) ? 'yes' : 'no';
@@ -134,17 +148,16 @@ function save_wc_rate_limiting_settings() {
 	$proxy_support = isset( $_POST['proxy_support'] ) ? 'yes' : 'no';
 	update_option( 'rate_limiting_proxy_support', $proxy_support );
 }
-
 add_action( 'woocommerce_update_options_advanced', 'save_wc_rate_limiting_settings' );
 
 add_filter(
 	'woocommerce_store_api_rate_limit_options',
 	function () {
 		return array(
-			'enabled'       => get_option('rate_limiting_enabled', true),
-			'proxy_support' => get_option('rate_limiting_proxy_support', false),
-			'limit'         => get_option('rate_limiting_limit', 25),
-			'seconds'       => get_option('rate_limiting_seconds', 10),
+			'enabled'       => get_option( 'rate_limiting_enabled', true ),
+			'proxy_support' => get_option( 'rate_limiting_proxy_support', false ),
+			'limit'         => get_option( 'rate_limiting_limit', 25 ),
+			'seconds'       => get_option( 'rate_limiting_seconds', 10 ),
 		);
 	}
 );
