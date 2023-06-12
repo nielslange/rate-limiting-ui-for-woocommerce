@@ -19,6 +19,18 @@
  */
 
 /**
+ * Declare compatibility with custom order tables for WooCommerce.
+ *
+ * @return void
+ */
+function declare_compatibility() {
+	if ( class_exists( '\Automattic\WooCommerce\Utilities\FeaturesUtil' ) ) {
+		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
+	}
+}
+add_action( 'before_woocommerce_init', array( __class__, 'declare_compatibility' ) );
+
+/**
  * Add settings link on plugin page
  *
  * @param array $links The original array with customizer links.
