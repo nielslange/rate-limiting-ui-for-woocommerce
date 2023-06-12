@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Rate limiting UI for WooCommerce
  * Plugin URI: https://github.com/nielslange/rate-limiting-ui-for-woocommerce
- * Description: Allows merchants to configure the rate limiting settings for WooCommerce.
+ * Description: Allows merchants to easily enable and configure the rate limiting settings for WooCommerce.
  * Version: 1.0
  * Author: Paulo Arromba, Niels Lange
  *
