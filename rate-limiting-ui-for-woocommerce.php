@@ -28,7 +28,7 @@ function declare_compatibility() {
 		\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', __FILE__, true );
 	}
 }
-add_action( 'before_woocommerce_init', array( __class__, 'declare_compatibility' ) );
+add_action( 'before_woocommerce_init', 'declare_compatibility' );
 
 /**
  * Add settings link on plugin page
