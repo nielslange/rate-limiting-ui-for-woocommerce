@@ -1,31 +1,33 @@
 {
-  "name": "rate-limiting-ui-for-woocommerce",
-  "description": "Allows merchants to configure the rate limiting settings for WooCommerce.",
-  "author": "Niels Lange",
-  "license": "GPL-2.0-or-later",
-  "keywords": [
-    "WordPress",
-    "Plugin",
-    "Rate limiting UI for WooCommerce"
-  ],
-  "homepage": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nielslange/rate-limiting-ui-for-woocommerce.git"
-  },
-  "bugs": {
-    "url": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce/issues"
-  },
-  "devDependencies": {
-    "@wordpress/prettier-config": "1.4.0",
-    "@wordpress/scripts": "22.3.0",
-    "eslint-plugin-woocommerce": "file:bin/eslint-plugin-woocommerce",
-    "prettier": "npm:wp-prettier@2.6.2"
-  },
-  "scripts": {
-    "phpcbf": "composer phpcbf",
-    "phpcs": "composer phpcs",
-    "phplint": "composer phplint",
-    "psalm": "composer psalm --no-cache"
-  }
+	"name": "rate-limiting-ui-for-woocommerce",
+	"description": "Allows merchants to configure the rate limiting settings for WooCommerce.",
+	"author": "Niels Lange",
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"WordPress",
+		"Plugin",
+		"Rate limiting UI for WooCommerce"
+	],
+	"homepage": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nielslange/rate-limiting-ui-for-woocommerce.git"
+	},
+	"bugs": {
+		"url": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce/issues"
+	},
+	"devDependencies": {
+		"@wordpress/prettier-config": "1.4.0",
+		"@wordpress/scripts": "22.3.0",
+		"eslint-plugin-woocommerce": "file:bin/eslint-plugin-woocommerce",
+		"npm-run-all": "^4.1.5",
+		"prettier": "npm:wp-prettier@2.6.2"
+	},
+	"scripts": {
+		"phpcbf": "composer phpcbf",
+		"phpcs": "composer phpcs",
+		"phplint": "composer phplint",
+		"psalm": "composer psalm --no-cache",
+		"test": "npm-run-all --parallel phpcs phplint psalm"
+	}
 }
