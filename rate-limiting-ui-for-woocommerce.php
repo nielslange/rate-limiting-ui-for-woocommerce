@@ -78,12 +78,6 @@ function add_wc_rate_limiting_settings( $settings ) {
 
 	$rate_limiting_settings = array(
 		array(
-			'name' => '',
-			'type' => 'title',
-			'desc' => wp_nonce_field( 'save_rate_limiting_settings', '_wpnonce', true, false ),
-			'id'   => 'nonce_field',
-		),
-		array(
 			'name' => __( 'Rate Limiting', 'rate-limiting-ui-for-woocommerce' ),
 			'type' => 'title',
 			'desc' => '',
@@ -93,13 +87,13 @@ function add_wc_rate_limiting_settings( $settings ) {
 			'name' => __( 'Enable', 'rate-limiting-ui-for-woocommerce' ),
 			'id'   => 'enabled',
 			'type' => 'checkbox',
-			'desc' => __( 'Enable the Rate Limiting feature', 'rate-limiting-ui-for-woocommerce' ),
+			'desc' => __( 'Enable the Rate Limiting feature.', 'rate-limiting-ui-for-woocommerce' ),
 		),
 		array(
 			'name'    => __( 'Seconds', 'rate-limiting-ui-for-woocommerce' ),
 			'id'      => 'seconds',
 			'type'    => 'number',
-			'css'     => 'width:50px;',
+			'css'     => 'width:60px;',
 			'default' => '10',
 			'desc'    => __( 'Time in seconds before rate limits are reset.', 'rate-limiting-ui-for-woocommerce' ),
 		),
@@ -107,7 +101,7 @@ function add_wc_rate_limiting_settings( $settings ) {
 			'name'    => __( 'Limit', 'rate-limiting-ui-for-woocommerce' ),
 			'id'      => 'limit',
 			'type'    => 'number',
-			'css'     => 'width:50px;',
+			'css'     => 'width:60px;',
 			'default' => '25',
 			'desc'    => __( 'Amount of max requests allowed for the defined timeframe.', 'rate-limiting-ui-for-woocommerce' ),
 
@@ -140,7 +134,7 @@ function save_wc_rate_limiting_settings() {
 		return;
 	}
 
-	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'save_rate_limiting_settings' ) ) {
+	if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( $_POST['_wpnonce'], 'woocommerce-settings' ) ) {
 		die( __( 'Could not verify request.', 'rate-limiting-ui-for-woocommerce' ) );
 	}
 
