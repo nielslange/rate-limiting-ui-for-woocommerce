@@ -183,10 +183,10 @@ class RateLimitingUIForWooCommerce {
 		$enabled = isset( $_POST['rate_limiting_enabled'] ) ? 'yes' : 'no';
 		update_option( 'rate_limiting_enabled', $enabled );
 
-		$seconds = isset( $_POST['rate_limiting_seconds'] ) && $_POST['rate_limiting_seconds'] !== '' ? intval( $_POST['rate_limiting_seconds'] ) : 10;
+		$seconds = isset( $_POST['rate_limiting_seconds'] ) && '' !== $_POST['rate_limiting_seconds'] ? intval( $_POST['rate_limiting_seconds'] ) : 10;
 		update_option( 'rate_limiting_seconds', $seconds );
 
-		$limit = isset( $_POST['rate_limiting_limit'] ) && $_POST['rate_limiting_limit'] !== '' ? intval( $_POST['rate_limiting_limit'] ) : 25;
+		$limit = isset( $_POST['rate_limiting_limit'] ) && '' !== $_POST['rate_limiting_limit'] ? intval( $_POST['rate_limiting_limit'] ) : 25;
 		update_option( 'rate_limiting_limit', $limit );
 
 		$proxy_support = isset( $_POST['rate_limiting_proxy_support'] ) ? 'yes' : 'no';
