@@ -18,6 +18,9 @@
  * @package Rate_Limiting_UI_for_WooCommerce
  */
 
+// Exit if accessed directly.
+defined( 'ABSPATH' ) || exit;
+
 /**
  * Rate Limiting UI for WooCommerce main class.
  */
@@ -52,6 +55,8 @@ class RateLimitingUIForWooCommerce {
 
 	/**
 	 * Rate Limiting UI for WooCommerce constructor.
+	 *
+	 * @return void
 	 */
 	public function __construct() {
 		$this->enabled = get_option( 'rate_limiting_enabled', 'yes' );
@@ -82,7 +87,6 @@ class RateLimitingUIForWooCommerce {
 	 * Add settings link on plugin page
 	 *
 	 * @param array $links The original array with customizer links.
-	 *
 	 * @return array The updated array with customizer links.
 	 */
 	public function add_plugin_action_links( array $links ) {
@@ -97,7 +101,6 @@ class RateLimitingUIForWooCommerce {
 	 * Add a new settings section tab to the WooCommerce advanced settings tabs array.
 	 *
 	 * @param array $sections The original array with the WooCommerce settings tabs.
-	 *
 	 * @return array $sections The updated array with our settings tab added.
 	 */
 	public function add_wc_advanced_settings_tab( $sections ) {
