@@ -17,6 +17,10 @@ Allows merchants to easily enable and configure the rate limiting settings for W
 2. Activate the plugin through the `Plugins` menu in WordPress.
 3. Go to `WooCommerce » Settings » Advanced » Rate Limiting` to configure the plugin.
 
+== Screenshots ==
+
+1. Control the rate limiting settings for WooCommerce via UI.
+
 == Contribute ==
 
 Contributions are more than welcome. Simply head over to [Github](https://github.com/nielslange/rate-limiting-ui-for-woocommerce) and open an issue or a pull request.
