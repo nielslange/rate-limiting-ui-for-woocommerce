@@ -27,6 +27,10 @@ You can find the plugin on <https://wordpress.org/plugins/rate-limiting-ui-for-w
 
 ## Changelog
 
+### 1.1 (2024.04.07)
+
+-   Teste against WP 6.5
+
 ### 1.0 (2023.12.30)
 
-- Initial release
+-   Initial release
