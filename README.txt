@@ -2,10 +2,10 @@
 
 Contributors: 		nielslange, pauloarromba
 Tags: 				Plugins
-Stable tag: 		1.1
-Tested up to: 		6.5
+Stable tag: 		1.2
+Tested up to: 		6.6
 Requires PHP: 		7.4
-Requires at least: 	5.2
+Requires at least: 	6.1
 License: 			GPL v2 or later
 License URI: 		https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -26,6 +26,14 @@ Allows merchants to easily enable and configure the rate limiting settings for W
 Contributions are more than welcome. Simply head over to [Github](https://github.com/nielslange/rate-limiting-ui-for-woocommerce) and open an issue or a pull request.
 
 == Changelog ==
+
+= 1.2 (2024.10.02) =
+
+-   Test against WordPress 6.6
+
+= 1.1 (2024.04.07) =
+
+-   Test against WordPress 6.5
 
 = 1.0 (2023.12.30) =
 

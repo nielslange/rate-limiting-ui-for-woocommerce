@@ -1,19 +1,17 @@
 <?php
 /**
- * Plugin Name: Rate limiting UI for WooCommerce
- * Plugin URI: https://github.com/nielslange/rate-limiting-ui-for-woocommerce
- * Description: Allows merchants to easily enable and configure the rate limiting settings for WooCommerce.
- * Version: 1.1
- * Author: Paulo Arromba, Niels Lange
- *
- * Requires at least: 6.1.1
- * Requires PHP: 7.4
- * WC requires at least: 7.2
- * WC tested up to: 7.2
- *
- * License: GPLv2 or later
- * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: rate-limiting-ui-for-woocommerce
+ * Plugin Name:             Rate limiting UI for WooCommerce
+ * Plugin URI:              https://github.com/nielslange/rate-limiting-ui-for-woocommerce
+ * Description:             Allows merchants to easily enable and configure the rate limiting settings for WooCommerce.
+ * Version:                 1.2
+ * Author:                  Paulo Arromba, Niels Lange
+ * Requires at least:       6.1
+ * Requires PHP:            7.4
+ * WC requires at least:    7.2
+ * WC tested up to:         7.2
+ * License:                 GPLv2 or later
+ * License URI:             https://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:             rate-limiting-ui-for-woocommerce
  *
  * @package Rate_Limiting_UI_for_WooCommerce
  */
