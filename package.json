@@ -1,7 +1,17 @@
 {
 	"name": "rate-limiting-ui-for-woocommerce",
 	"description": "Allows merchants to configure the rate limiting settings for WooCommerce.",
-	"author": "Niels Lange",
+	"authors": [
+		{
+			"name": "Paulo Aromba"
+		},
+		{
+			"name": "Niels Lange"
+		},
+		{
+			"name": "Riaan Knoetze"
+		}
+	],
 	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"WordPress",
@@ -17,17 +27,17 @@
 		"url": "https://github.com/nielslange/rate-limiting-ui-for-woocommerce/issues"
 	},
 	"devDependencies": {
-		"@woocommerce/eslint-plugin": "^2.2.0",
-		"@wordpress/prettier-config": "1.4.0",
-		"@wordpress/scripts": "22.3.0",
+		"@woocommerce/eslint-plugin": "2.3.0",
+		"@wordpress/prettier-config": "4.2.0",
+		"@wordpress/scripts": "28.2.0",
 		"npm-run-all": "^4.1.5",
-		"prettier": "npm:wp-prettier@2.6.2"
+		"prettier": "npm:wp-prettier@3.0.3"
 	},
 	"scripts": {
 		"phpcbf": "composer phpcbf",
 		"phpcs": "composer phpcs",
 		"phplint": "composer phplint",
-		"psalm": "composer psalm --no-cache",
+		"psalm": "composer psalm --no-cache --show-info=true",
 		"test": "npm-run-all --parallel phpcs phplint psalm"
 	}
 }
