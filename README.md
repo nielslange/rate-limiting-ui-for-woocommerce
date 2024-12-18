@@ -17,19 +17,23 @@ Enhance the security and performance of your WooCommerce store with the Rate Lim
 2. Activate the plugin through the `Plugins` menu in WordPress.
 3. Go to `WooCommerce » Settings » Advanced » Rate Limiting` to configure the plugin.
 
-## Screenshot
-
-![rate-limiting-ui-for-woocommerce](https://github.com/nielslange/rate-limiting-ui-for-woocommerce/assets/3323310/66b43c55-3366-4f45-8b30-894c255598de)
-
 ## Plugin page
 
 You can find the plugin on <https://wordpress.org/plugins/rate-limiting-ui-for-woocommerce/>.
 
+## Screenshot
+
+![rate-limiting-ui-for-woocommerce](https://github.com/nielslange/rate-limiting-ui-for-woocommerce/assets/3323310/66b43c55-3366-4f45-8b30-894c255598de)
+
 ## Changelog
+
+### 1.2 (2024.10.02)
+
+-   Test against WordPress 6.6
 
 ### 1.1 (2024.04.07)
 
--   Teste against WP 6.5
+-   Test against WordPress 6.5
 
 ### 1.0 (2023.12.30)
 
