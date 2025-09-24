@@ -57,10 +57,10 @@ class RateLimitingUIForWooCommerce {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->enabled = get_option( 'rate_limiting_enabled', 'yes' );
+		$this->enabled = 'yes' === get_option( 'rate_limiting_enabled', 'yes' );
 		$this->seconds = get_option( 'rate_limiting_seconds', 10 );
 		$this->limit   = get_option( 'rate_limiting_limit', 25 );
-		$this->proxy   = get_option( 'rate_limiting_proxy_support', 'no' );
+		$this->proxy   = 'yes' === get_option( 'rate_limiting_proxy_support', 'no' );
 
 		add_action( 'before_woocommerce_init', array( $this, 'declare_compatibility' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_plugin_action_links' ) );
