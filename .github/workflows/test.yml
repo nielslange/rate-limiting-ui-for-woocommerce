@@ -1,6 +1,14 @@
 name: Run PHPCS, PHPLint, and Psalm
 
-on: push
+on:
+  pull_request:
+  push:
+    branches:
+      - trunk
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   PHPCS:
@@ -8,10 +16,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
 
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v4
 
       - name: Show PHPCS sniffs
         run: ./vendor/bin/phpcs -i
@@ -27,10 +40,15 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
 
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v4
 
       - name: Show PHPLint version info
         run: ./vendor/bin/phplint --version
@@ -43,15 +61,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
 
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v4
 
-      - name: Show PHPCS sniffs
-        run: ./vendor/bin/phpcs -i
-
-      - name: Show version info
+      - name: Show Psalm version
         run: ./vendor/bin/psalm --version
 
       - name: Run Psalm

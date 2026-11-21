@@ -25,21 +25,22 @@
 		}
 	],
 	"require": {
-		"php": ">=7.0"
+		"php": ">=7.4"
 	},
 	"require-dev": {
-		"humanmade/psalm-plugin-wordpress": "^3.1",
-		"overtrue/phplint": "^9.5",
-		"phpcompatibility/phpcompatibility-wp": "^2.1",
-		"squizlabs/php_codesniffer": "^3.7",
-		"vimeo/psalm": "^5.26",
-		"wp-coding-standards/wpcs": "^3.1",
-		"dealerdirect/phpcodesniffer-composer-installer": "^1.0"
+		"dealerdirect/phpcodesniffer-composer-installer": "^1.2.1",
+		"humanmade/psalm-plugin-wordpress": "^3.1.2",
+		"overtrue/phplint": "^9.7",
+		"php-stubs/woocommerce-stubs": "^11.1",
+		"phpcompatibility/phpcompatibility-wp": "^2.1.8",
+		"squizlabs/php_codesniffer": "^3.13.5",
+		"vimeo/psalm": "^6.18",
+		"wp-coding-standards/wpcs": "^3.4.1"
 	},
 	"scripts": {
 		"phpcbf": "phpcbf --standard=phpcs.xml .",
 		"phpcs": "phpcs --standard=phpcs.xml .",
-		"phplint": "phplint",
+		"phplint": "phplint lint",
 		"psalm": "psalm --no-cache"
 	},
 	"config": {
