@@ -3,7 +3,7 @@
 Contributors: 		nielslange, pauloarromba, riaanknoetze
 Tags: 				Plugins
 Stable tag: 		1.2
-Tested up to: 		6.6
+Tested up to: 		7.1
 Requires PHP: 		7.4
 Requires at least: 	6.1
 License: 			GPL v2 or later
