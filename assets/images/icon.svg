@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256"><defs><linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3B4252"/><stop offset="1" stop-color="#2E3440"/></linearGradient></defs><rect width="256" height="256" fill="url(#bg)"/><path d="M0 216 q16 -9 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0" fill="none" stroke="#4C566A" stroke-width="6" stroke-linecap="round"/><path d="M-16 236 q16 -9 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0" fill="none" stroke="#434C5E" stroke-width="6" stroke-linecap="round"/><g fill="none" stroke="#88C0D0" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"><path d="M40 190 A88 88 0 0 1 216 190 Z" fill="#88C0D0" fill-opacity=".12" stroke="none"/>
+<path d="M40 190 A88 88 0 0 1 190.2 127.8"/>
+<path d="M190.2 127.8 A88 88 0 0 1 216 190" stroke="#B48EAD" stroke-width="11"/>
+<path d="M32 190 H224"/>
+<path d="M70.8 157 L62.2 152 M95 132.8 L90 124.2 M128 124 V114 M161 132.8 L166 124.2" stroke-width="6"/>
+<path d="M128 190 L170.4 139.4" stroke="#373D4A" stroke-width="22"/>
+<path d="M128 190 L170.4 139.4" stroke-width="8"/>
+<circle cx="128" cy="190" r="13" fill="#B48EAD" stroke="none"/>
+</g></svg>
