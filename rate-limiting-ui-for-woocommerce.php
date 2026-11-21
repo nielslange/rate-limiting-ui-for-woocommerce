@@ -3,7 +3,7 @@
  * Plugin Name:             Rate limiting UI for WooCommerce
  * Plugin URI:              https://github.com/nielslange/rate-limiting-ui-for-woocommerce
  * Description:             Enhance the security and performance of your WooCommerce store with the Rate Limiting UI for WooCommerce plugin, specifically designed for managing traffic to the Checkout block. This plugin provides a user-friendly interface within WooCommerce settings, allowing store owners to easily configure rate limits to prevent abuse and ensure smooth transaction processes. Ideal for stores experiencing high volumes of traffic, it ensures that your checkout experience remains efficient and secure.
- * Version:                 1.2
+ * Version:                 1.3
  * Author:                  Paulo Arromba, Niels Lange, Riaan Knoetze
  * Requires at least:       6.1
  * Requires PHP:            7.4
