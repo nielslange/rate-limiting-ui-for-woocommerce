@@ -67,7 +67,7 @@ class RateLimitingUIForWooCommerce {
 		add_filter( 'woocommerce_get_sections_advanced', array( $this, 'add_wc_advanced_settings_tab' ), 20 );
 		add_filter( 'woocommerce_get_settings_advanced', array( $this, 'add_wc_rate_limiting_settings' ) );
 		add_action( 'woocommerce_update_options_advanced', array( $this, 'save_wc_rate_limiting_settings' ) );
-		add_filter( 'woocommerce_store_api_rate_limit_options', array( $this, 'add_rate_limiting_settings_to_rest_api' ) );
+		add_filter( 'rest_authentication_errors', array( $this, 'apply_checkout_rate_limiting' ), 9 );
 	}
 
 	/**
@@ -192,6 +192,24 @@ class RateLimitingUIForWooCommerce {
 
 		$proxy_support = isset( $_POST['rate_limiting_proxy_support'] ) ? 'yes' : 'no';
 		update_option( 'rate_limiting_proxy_support', $proxy_support );
+	}
+
+	/**
+	 * Apply rate limiting to the checkout post request.
+	 *
+	 * @param mixed $result The result of the REST authentication.
+	 * @return mixed The result of the REST authentication.
+	 */
+	public function apply_checkout_rate_limiting( $result ) {
+		if (
+			! empty( $GLOBALS['wp']->query_vars['rest_route'] )
+			&& preg_match( '#/wc/store(?:/v\d+)?/checkout#', $GLOBALS['wp']->query_vars['rest_route'] )
+			&& isset( $_SERVER['REQUEST_METHOD'] )
+			&& 'POST' === $_SERVER['REQUEST_METHOD']
+		) {
+			add_filter( 'woocommerce_store_api_rate_limit_options', array( $this, 'add_rate_limiting_settings_to_rest_api' ) );
+		}
+		return $result;
 	}
 
 	/**
