@@ -3,13 +3,13 @@
 ![Support Level](https://img.shields.io/badge/support-active-green.svg)
 ![Build Status](https://github.com/nielslange/rate-limiting-ui-for-woocommerce/actions/workflows/test.yml/badge.svg)
 ![GPLv2 License](https://img.shields.io/github/license/nielslange/rate-limiting-ui-for-woocommerce.svg)
-![Compatible to WordPress version](https://plugintests.com/plugins/rate-limiting-ui-for-woocommerce/wp-badge.svg)
-![Compatible to PHP version](https://plugintests.com/plugins/rate-limiting-ui-for-woocommerce/php-badge.svg)
+![Compatible to WordPress version](https://img.shields.io/wordpress/plugin/tested/rate-limiting-ui-for-woocommerce.svg)
+![Compatible to PHP version](https://img.shields.io/wordpress/plugin/required-php/rate-limiting-ui-for-woocommerce.svg)
 ![Downloads](https://img.shields.io/wordpress/plugin/dt/rate-limiting-ui-for-woocommerce.svg)
 ![Plugin Version](https://img.shields.io/wordpress/plugin/v/rate-limiting-ui-for-woocommerce.svg)
 ![Tag Version](https://img.shields.io/github/tag/nielslange/rate-limiting-ui-for-woocommerce.svg)
 
-Allows merchants to easily enable and configure the rate limiting settings for WooCommerce.
+Enhance the security and performance of your WooCommerce store with the Rate Limiting UI for WooCommerce plugin, specifically designed for managing traffic to the Checkout block. This plugin provides a user-friendly interface within WooCommerce settings, allowing store owners to easily configure rate limits to prevent abuse and ensure smooth transaction processes. Ideal for stores experiencing high volumes of traffic, it ensures that your checkout experience remains efficient and secure.
 
 ## Installation
 
