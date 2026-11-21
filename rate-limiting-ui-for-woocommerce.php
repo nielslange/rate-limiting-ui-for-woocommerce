@@ -8,7 +8,7 @@
  * Requires at least:       6.1
  * Requires PHP:            7.4
  * WC requires at least:    7.2
- * WC tested up to:         7.2
+ * WC tested up to:         11.3
  * License:                 GPLv2 or later
  * License URI:             https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:             rate-limiting-ui-for-woocommerce
@@ -57,10 +57,10 @@ class RateLimitingUIForWooCommerce {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->enabled = get_option( 'rate_limiting_enabled', 'yes' );
-		$this->seconds = get_option( 'rate_limiting_seconds', 10 );
-		$this->limit   = get_option( 'rate_limiting_limit', 25 );
-		$this->proxy   = get_option( 'rate_limiting_proxy_support', 'no' );
+		$this->enabled = 'yes' === get_option( 'rate_limiting_enabled', 'yes' );
+		$this->seconds = (int) get_option( 'rate_limiting_seconds', 10 );
+		$this->limit   = (int) get_option( 'rate_limiting_limit', 25 );
+		$this->proxy   = 'yes' === get_option( 'rate_limiting_proxy_support', 'no' );
 
 		add_action( 'before_woocommerce_init', array( $this, 'declare_compatibility' ) );
 		add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'add_plugin_action_links' ) );
@@ -197,15 +197,17 @@ class RateLimitingUIForWooCommerce {
 	/**
 	 * Apply rate limiting to the checkout post request.
 	 *
+	 * Mirrors the checks WooCommerce uses for its own "Rate limit Checkout"
+	 * feature, so only placing an order is limited.
+	 *
 	 * @param mixed $result The result of the REST authentication.
 	 * @return mixed The result of the REST authentication.
 	 */
 	public function apply_checkout_rate_limiting( $result ) {
 		if (
 			! empty( $GLOBALS['wp']->query_vars['rest_route'] )
-			&& preg_match( '#/wc/store(?:/v\d+)?/checkout#', $GLOBALS['wp']->query_vars['rest_route'] )
-			&& isset( $_SERVER['REQUEST_METHOD'] )
-			&& 'POST' === $_SERVER['REQUEST_METHOD']
+			&& preg_match( '#/wc/store(?:/v\d+)?/checkout#i', $GLOBALS['wp']->query_vars['rest_route'] )
+			&& $this->is_only_post_request()
 		) {
 			add_filter( 'woocommerce_store_api_rate_limit_options', array( $this, 'add_rate_limiting_settings_to_rest_api' ) );
 		}
@@ -213,11 +215,39 @@ class RateLimitingUIForWooCommerce {
 	}
 
 	/**
+	 * Whether the request is a POST request that is not overridden to another method.
+	 *
+	 * @return bool
+	 */
+	private function is_only_post_request() {
+		if ( ! isset( $_SERVER['REQUEST_METHOD'] ) || 'POST' !== $_SERVER['REQUEST_METHOD'] ) {
+			return false;
+		}
+
+		if ( isset( $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ) ) {
+			$method_override = strtoupper( sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'] ) ) );
+			if ( '' !== $method_override && 'POST' !== $method_override ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Add the rate limiting settings to the WooCommerce REST API settings.
 	 *
+	 * When the plugin's rate limiting is disabled, the options are passed through
+	 * unchanged, so WooCommerce's own "Rate limit Checkout" feature keeps working.
+	 *
+	 * @param array $options The rate limiting options.
 	 * @return array
 	 */
-	public function add_rate_limiting_settings_to_rest_api() {
+	public function add_rate_limiting_settings_to_rest_api( $options ) {
+		if ( ! $this->enabled ) {
+			return $options;
+		}
+
 		return array(
 			'enabled'       => $this->enabled,
 			'proxy_support' => $this->proxy,
