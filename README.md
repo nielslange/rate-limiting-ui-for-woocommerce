@@ -27,6 +27,13 @@ You can find the plugin on <https://wordpress.org/plugins/rate-limiting-ui-for-w
 
 ## Changelog
 
+### 1.3 (2026.11.21)
+
+-   Fix a fatal error in the WooCommerce Store API with current WooCommerce versions
+-   Apply rate limits to checkout requests only
+-   Keep WooCommerce's own "Rate limit Checkout" setting working while the plugin's rate limiting is off
+-   Test against WordPress 7.1 and WooCommerce 11.3
+
 ### 1.2 (2024.10.02)
 
 -   Test against WordPress 6.6

@@ -2,7 +2,7 @@
 
 Contributors: 		nielslange, pauloarromba, riaanknoetze
 Tags: 				Plugins
-Stable tag: 		1.2
+Stable tag: 		1.3
 Tested up to: 		7.1
 Requires PHP: 		7.4
 Requires at least: 	6.1
@@ -26,6 +26,13 @@ Enhance the security and performance of your WooCommerce store with the Rate Lim
 Contributions are more than welcome. Simply head over to [Github](https://github.com/nielslange/rate-limiting-ui-for-woocommerce) and open an issue or a pull request.
 
 == Changelog ==
+
+= 1.3 (2026.11.21) =
+
+-   Fix a fatal error in the WooCommerce Store API with current WooCommerce versions
+-   Apply rate limits to checkout requests only
+-   Keep WooCommerce's own "Rate limit Checkout" setting working while the plugin's rate limiting is off
+-   Test against WordPress 7.1 and WooCommerce 11.3
 
 = 1.2 (2024.10.02) =
 
