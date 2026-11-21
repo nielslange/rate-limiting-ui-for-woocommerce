@@ -1,7 +1,7 @@
 {
 	"name": "rate-limiting-ui-for-woocommerce",
 	"description": "Allows merchants to configure the rate limiting settings for WooCommerce.",
-	"authors": [
+	"contributors": [
 		{
 			"name": "Paulo Aromba"
 		},
