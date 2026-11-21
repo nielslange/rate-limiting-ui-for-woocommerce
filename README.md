@@ -9,7 +9,11 @@
 ![Plugin Version](https://img.shields.io/wordpress/plugin/v/rate-limiting-ui-for-woocommerce.svg)
 ![Tag Version](https://img.shields.io/github/tag/nielslange/rate-limiting-ui-for-woocommerce.svg)
 
-Enhance the security and performance of your WooCommerce store with the Rate Limiting UI for WooCommerce plugin, specifically designed for managing traffic to the Checkout block. This plugin provides a user-friendly interface within WooCommerce settings, allowing store owners to easily configure rate limits to prevent abuse and ensure smooth transaction processes. Ideal for stores experiencing high volumes of traffic, it ensures that your checkout experience remains efficient and secure.
+Set the WooCommerce Store API rate limit for checkout in the WooCommerce settings: requests, time window and proxy support.
+
+WooCommerce can limit how often the Store API checkout endpoint accepts orders, but only through code or a fixed on/off setting. Rate Limiting UI for WooCommerce adds a settings screen under WooCommerce » Settings » Advanced » Rate Limiting. There you set how many checkout requests are allowed per time window and turn on proxy support for stores behind a CDN or load balancer.
+
+The limit applies only to placing an order through the Checkout block, so browsing and the cart are not affected. When the plugin's rate limiting is off, WooCommerce's own "Rate limit Checkout" setting keeps working.
 
 ## Installation
 
@@ -26,6 +30,11 @@ You can find the plugin on <https://wordpress.org/plugins/rate-limiting-ui-for-w
 ![rate-limiting-ui-for-woocommerce](https://github.com/nielslange/rate-limiting-ui-for-woocommerce/assets/3323310/66b43c55-3366-4f45-8b30-894c255598de)
 
 ## Changelog
+
+### 1.4 (2026.11.21)
+
+-   Shorten the plugin's short description to the 150 characters WordPress.org supports and add a full description
+-   Add plugin tags
 
 ### 1.3 (2026.11.21)
 
